@@ -1,0 +1,40 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+def loadimage(filename):
+    img = mpimg.imread(filename)
+    if type(img[0,0,0]) == np.float32:
+        img = img * 255
+        return np.float64(img)
+    else:
+        return np.float64(img)
+
+def saveImage(imageData, filename, scale=False, format="RGB"):
+    if scale = False:
+        imageData[imageData > 255] = 255
+    if scale = True:
+        imageData = imageData - np.min(imageData)
+        imageData = imageData/np.max(imageData)
+        imageData = imageData * 255
+        imageData = np.uint8(np.round(imageData))
+        return plt.savefig(imageData.jpeg)
+
+def rgb2hsl(imageData):
+R2 = (imageData[:,:,0])/255
+G2 = (imageData[:,:,1])/255
+B2 = (imageData[:,:,2])/255
+Cmax = np.max((R2,G2,B2))
+Cmin = np.min((R2,G2,B2))
+D = Cmax - Cmin
+
+if D = 0:
+    H = 0
+    S = 0
+elif Cmax == R2:
+    H = 60 * np.mod(((G2-B2)/D))
+elif Cmax == G2:
+    H = 60 * (((B2-R2)/D) + 2)
+else:
+    H = 60 * (((R2-G2)/D) + 4)
+L = (Cmax + Cmin)/2
