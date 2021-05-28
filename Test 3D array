@@ -1,0 +1,11 @@
+imageData = np.zeros([3,3,3])
+(row,col,colourlength) = imageData.shape
+for rows in range(0,row):
+    for cols in range(0,col):
+        (H,S,L) = imageData[rows,cols,:]
+        H = random.randint(1,255)
+        S = random.random()
+        L = random.random()
+        imageData[rows,cols,:] = (H,S,L)
+
+np.set_printoptions(precision=3); np.set_printoptions(suppress=True)
