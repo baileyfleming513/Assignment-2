@@ -1,0 +1,8 @@
+def tonemapHSL(imageData, h, s):
+    (rows, cols, colourlength) = imageData.shape
+    for row in range(0,rows):
+        for col in range(0,cols):
+            (H,S,L) = imageData[row,col,:]
+            H = h; S = s
+            imageData[row,col,:] = (H,S,L)
+    return imageData
