@@ -1,0 +1,7 @@
+def brightness(imageData, b, changeType="absolute")
+if changeType == "relative":
+    imageData = imageData*b
+    return imageData
+if changeType == "absolute":
+    imageData + [0,0,b]
+    return imageData
