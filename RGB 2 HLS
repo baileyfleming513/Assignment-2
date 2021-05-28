@@ -1,0 +1,20 @@
+(rows, cols, colourlength) = imageData.shape
+for row in range(0,rows):
+    for col in range(0,cols):
+        (R, G, B) = imageData[row,col,:]
+        R2 = R/255; G2 = G/255; B2 = B/255
+        Cmax = np.max((R2,G2,B2)); Cmin = np.min((R2,G2,B2))
+        D = Cmax - Cmin
+        L = (Cmax + Cmin)/2
+        S = D/(1 - np.abs(2*L-1))
+        if D == 0:
+            H = 0
+            S = 0
+        elif Cmax == R2:
+            H = 60 * np.mod6((G2 - B2)/D)
+        elif Cmax == G2:
+            H = 60 * (((B2 - R2)/D) + 2)
+        elif Cmax == B2:
+            H = 60 * (((R2 - G2)/D) + 4)
+        imageData[row,col,:] = (H,L,S)
+        return imageData
