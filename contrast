@@ -1,0 +1,10 @@
+def contrast(imageData, c):
+    (rows,cols,colourlength) = imageData.shape
+    for row in range(0,rows):
+        for col in range(0,cols):
+            (R,G,B) = imageData[row,col,:]
+            R = (c*(R-127.5) + 127.5)
+            G = (c*(G-127.5) + 127.5)
+            B = (c*(B-127.5) + 127.5)
+            imageData[row,col,:] = (R,G,B)
+    return imageData
