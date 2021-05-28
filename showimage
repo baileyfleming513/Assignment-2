@@ -1,0 +1,5 @@
+tmp = imageData.copy()
+tmp[tmp > 255] = 255; tmp[tmp < 0] = 0
+tmp = np.uint8(tmp)
+plt.imshow(tmp)
+plt.axis("off")
