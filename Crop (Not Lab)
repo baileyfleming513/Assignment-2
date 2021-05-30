@@ -1,0 +1,8 @@
+def crop(imageData,top,bot,left,right):
+    (row,col,colourlength) = imageData.shape
+    if bot >= -1:
+        return print("Bot input must be smaller than -1"), imageData
+    elif right >= -1:
+        return print("Right inpuit must be smaller than -1"), imageData
+    else:
+        return imageData[top:bot,left:right]
